@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="contact-list">
+    <div class="search-bar">
+      <input type="text"
+             placeholder="Nome, CPF..."
+             [(ngModel)]="searchText"
+             (input)="filterContacts()"
+             class="form-control" />
+
+      <button class="clear-btn" (click)="clearSearch()">
+        <i class="fa fa-times"></i>
+      </button>
+      <button class="clear-btn" (click)="addContact()">
+        <i class="fa fa-plus"></i>
+      </button>
+    </div>
+
+    <div class="contacts">
+      <div class="contact-card"
+           *ngFor="let contact of filteredContacts; let i = index"
+           [ngStyle]="{ 'background-color': i % 2 === 0 ? '#f5f5f5' : '#fff' }"
+           (click)="selectContact(contact)">
+        <div class="avatar">
+          {{ contact.name.charAt(0).toUpperCase() }}
+        </div>
+        <div class="contact-info">
+          <h4>{{ contact.name }}</h4>
+          <h4>{{ contact.cpf }}</h4>
+          <p>{{ contact.city }} - {{ contact.state }}</p>
+          <p>{{ contact.street }} - {{ contact.number }}</p>
+          <p>{{ contact.phone }}</p>
+        </div>
+        <div class="buttons-container">
+          <button class="edit-btn" (click)="openDialog(contact)">
+            <i class="fa fa-pencil"></i>
+          </button>
+          <button class="edit-btn" (click)="deleteContact(contact.contactId)">
+            <i class="fa fa-ban"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="map-area">
+    <app-maps></app-maps>
+  </div>
+</div>
+
+

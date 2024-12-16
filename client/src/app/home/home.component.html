@@ -1,0 +1,23 @@
+<div class="container mt-5">
+  <div style="text-align: center;">
+
+    @if (!registerMode) {
+    <h1>Visualize seus Contatos!</h1>
+    <p class="lead">Consiga acompanhar seus contatos de forma simples e rápida!</p>
+    <div class="text-center">
+      <button (click)="registerToggle()" class="btn btn-primary btn-lg me-2">Cadastre-se</button>
+      <button class="btn btn-info btn-lg me-2">Saiba mais</button>
+    </div>
+    } @else {
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-4">
+          <app-register-form
+              (cancelRegister)="cancelRegisterMode($event)">
+          </app-register-form>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>

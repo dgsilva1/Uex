@@ -1,0 +1,16 @@
+<div style="padding: 15px">
+  <h1>Confirmar Exclusão</h1>
+  <div>
+    <p>Você tem certeza que deseja excluir sua conta? Todos os dados serão permanentemente deletados.</p>
+    <div class="col-md-3 form-floating">
+      <input type="password"
+             name="password"
+             [(ngModel)]="password"
+             placeholder="Digite sua senha">
+    </div>
+  </div>
+  <div style="padding: 10px" class="form-group text-center">
+    <button class="btn btn-danger me-2" (click)="confirmDeletion()">Excluir Conta</button>
+    <button class="btn btn-default me-2" (click)="cancel()" type="button">Cancelar</button>
+  </div>
+</div>

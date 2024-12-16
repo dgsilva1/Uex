@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/" routerLinkActive="active">Inicio</a>
+
+    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+      @if (accountService.currentUser()) {
+        <li class="nav-item">
+          <a routerLink="/contacts" routerLinkActive="active" class="nav-link">Contatos</a>
+        </li>
+      }
+    </ul>
+
+
+    @if (accountService.currentUser()) {
+    <div class="dropdown" dropdown>
+      <a dropdownToggle class="dropdown-toggle text-light text-decoration-none" aria-haspopup="true" aria-expanded="false">
+        Bem vindo, {{accountService.currentUser()?.firstName }}
+      </a>
+      <div *dropdownMenu class="dropdown-menu">
+        <a (click)="deletarConta()" class="dropdown-item">Deletar Conta</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" (click)="logout()">Sair</a>
+      </div>
+    </div>
+    }
+
+    @if (!accountService.currentUser()) {
+    <form #loginForm="ngForm" (ngSubmit)="login()" class="d-flex" autocomplete="off">
+      <input class="form-control me-2" name="login" [(ngModel)]="model.login" placeholder="Login">
+      <input class="form-control me-2" name="password" [(ngModel)]="model.password" placeholder="Senha" type="password">
+      <button class="btn btn-dark" type="submit">Login</button>
+    </form>
+    }
+  </div>
+</nav>

@@ -1,0 +1,136 @@
+<form style="padding: 20px" #contactForm="ngForm" (ngSubmit)="saveContact()" autocomplete="off" novalidate>
+  <h2 class="text-center text-primary">Cadastro de Contato</h2>
+  <hr />
+  <div class="row mb-3">
+    <!-- CPF -->
+    <div class="col-md-6 form-floating">
+      <input type="text"
+             class="form-control"
+             name="cpf"
+             [(ngModel)]="model.cpf"
+             placeholder="CPF"
+             mask="000.000.000-00"
+             required
+             [class.is-invalid]="contactForm.submitted && !contactForm.controls['cpf']?.valid">
+      <div class="invalid-feedback">CPF é obrigatório.</div>
+    </div>
+
+    <!-- Nome -->
+    <div class="col-md-6 form-floating">
+      <input type="text"
+             class="form-control"
+             name="name"
+             [(ngModel)]="model.name"
+             placeholder="Nome"
+             required
+             [class.is-invalid]="contactForm.submitted && !contactForm.controls['name']?.valid">
+      <div class="invalid-feedback">Nome é obrigatório.</div>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <!-- Telefone -->
+    <div class="col-md-6 form-floating">
+      <input type="text"
+             class="form-control"
+             name="phone"
+             [(ngModel)]="model.phone"
+             placeholder="Telefone"
+             required
+             [class.is-invalid]="contactForm.submitted && !contactForm.controls['phone']?.valid">
+      <div class="invalid-feedback">Telefone é obrigatório.</div>
+    </div>
+
+    <!-- CEP -->
+    <div class="col-md-6 form-floating">
+      <input type="text"
+             class="form-control"
+             name="cep"
+             [(ngModel)]="model.cep"
+             placeholder="CEP"
+             (blur)="fetchAdress()"
+             required
+             [class.is-invalid]="contactForm.submitted && !contactForm.controls['cep']?.valid">
+      <div class="invalid-feedback">CEP é obrigatório.</div>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <!-- Estado -->
+    <div class="col-md-4 form-floating">
+      <input type="text"
+             class="form-control"
+             name="state"
+             [(ngModel)]="model.state"
+             placeholder="Estado"
+             required
+             [class.is-invalid]="contactForm.submitted && !contactForm.controls['state']?.valid">
+      <div class="invalid-feedback">Estado é obrigatório.</div>
+    </div>
+
+    <!-- Cidade -->
+    <div class="col-md-4 form-floating">
+      <input type="text"
+             class="form-control"
+             name="city"
+             [(ngModel)]="model.city"
+             placeholder="Cidade"
+             required
+             [class.is-invalid]="contactForm.submitted && !contactForm.controls['city']?.valid">
+      <div class="invalid-feedback">Cidade é obrigatória.</div>
+    </div>
+
+    <!-- Bairro -->
+    <div class="col-md-4 form-floating">
+      <input type="text"
+             class="form-control"
+             name="district"
+             [(ngModel)]="model.district"
+             placeholder="Bairro"
+             required
+             [class.is-invalid]="contactForm.submitted && !contactForm.controls['district']?.valid">
+      <div class="invalid-feedback">Bairro é obrigatório.</div>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <!-- Rua -->
+    <div class="col-md-6 form-floating">
+      <input type="text"
+             class="form-control"
+             name="street"
+             [(ngModel)]="model.street"
+             placeholder="Rua"
+             required
+             [class.is-invalid]="contactForm.submitted && !contactForm.controls['street']?.valid">
+      <div class="invalid-feedback">Rua é obrigatória.</div>
+    </div>
+
+    <!-- Número -->
+    <div class="col-md-3 form-floating">
+      <input type="text"
+             class="form-control"
+             name="number"
+             [(ngModel)]="model.number"
+             placeholder="Número"
+             required
+             [class.is-invalid]="contactForm.submitted && !contactForm.controls['number']?.valid">
+      <div class="invalid-feedback">Número é obrigatório.</div>
+    </div>
+
+    <!-- Complemento -->
+    <div class="col-md-3 form-floating">
+      <input type="text"
+             class="form-control"
+             name="complement"
+             [(ngModel)]="model.complement"
+             placeholder="Complemento">
+    </div>
+
+  </div>
+
+  <div class="form-group text-center">
+    <button class="btn btn-success me-2" type="submit">Salvar</button>
+    <button class="btn btn-default me-2" (click)="cancel()" type="button">Cancelar</button>
+  </div>
+</form>

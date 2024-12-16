@@ -92,11 +92,24 @@ namespace TesteUex.Controllers
 
                             if (coordinates != null)
                             {
-                                return Ok(new
+                                return Ok(new CordinatesResponse
                                 {
-                                    Latitude = coordinates.Lat,
-                                    Longitude = coordinates.Lng,
-                                    Address = firstResult?.FormattedAddress
+                                    Results = new List<Result>
+                                    {
+                                        new Result
+                                        {
+                                            FormattedAddress = firstResult?.FormattedAddress,
+                                            Geometry = new Geometry
+                                            {
+                                                Location = new Location
+                                                {
+                                                    Lat = coordinates.Lat,
+                                                    Lng = coordinates.Lng
+                                                }
+                                            }
+                                        }
+                                    },
+                                    Status = "OK"
                                 });
                             }
                         }

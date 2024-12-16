@@ -1,0 +1,40 @@
+<form #cadastroForm="ngForm" (ngSubmit)="register()" autocomplete="off">
+  <h2 class="text-center text-primary">Cadastre-se</h2>
+  <hr />
+  <div class="mb-3 form-floating">
+    <input type="text"
+           class="form-control"
+           name="name"
+           [(ngModel)]="model.name"
+           placeholder="Nome Completo">
+    <label>Nome</label>
+  </div>
+  <div class="mb-3 form-floating">
+    <input type="text"
+           class="form-control"
+           name="login"
+           [(ngModel)]="model.login"
+           placeholder="Login">
+    <label>Login</label>
+  </div>
+  <div class="mb-3 form-floating">
+    <input type="password"
+           class="form-control"
+           name="password"
+           [(ngModel)]="model.password"
+           placeholder="Senha">
+    <label>Senha</label>
+  </div>
+  <div class="mb-3 form-floating">
+    <input type="text"
+           class="form-control"
+           name="email"
+           [(ngModel)]="model.email"
+           placeholder="E-Mail">
+    <label>E-mail</label>
+  </div>
+  <div class="form-group text-center">
+    <button class="btn btn-success me-2" type="submit">Salvar</button>
+    <button class="btn btn-default me-2" (click)="cancel()" type="button">Cancelar</button>
+  </div>
+</form>
