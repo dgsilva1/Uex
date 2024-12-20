@@ -6,7 +6,10 @@
            class="form-control"
            name="name"
            [(ngModel)]="model.name"
-           placeholder="Nome Completo">
+           placeholder="Nome Completo"
+           required
+           [class.is-invalid]="cadastroForm.submitted && !cadastroForm.controls['name']?.valid">
+    <div class="invalid-feedback">Nome é obrigatório.</div>
     <label>Nome</label>
   </div>
   <div class="mb-3 form-floating">
@@ -14,7 +17,10 @@
            class="form-control"
            name="login"
            [(ngModel)]="model.login"
-           placeholder="Login">
+           placeholder="Login"
+           required
+          [class.is-invalid]="cadastroForm.submitted && !cadastroForm.controls['login']?.valid">
+      <div class="invalid-feedback">Login é obrigatório.</div>
     <label>Login</label>
   </div>
   <div class="mb-3 form-floating">
@@ -22,7 +28,10 @@
            class="form-control"
            name="password"
            [(ngModel)]="model.password"
-           placeholder="Senha">
+           placeholder="Senha"
+           required
+           [class.is-invalid]="cadastroForm.submitted && !cadastroForm.controls['password']?.valid">
+    <div class="invalid-feedback">Senha é obrigatório.</div>
     <label>Senha</label>
   </div>
   <div class="mb-3 form-floating">
@@ -30,11 +39,14 @@
            class="form-control"
            name="email"
            [(ngModel)]="model.email"
-           placeholder="E-Mail">
+           placeholder="E-Mail"
+           required
+           [class.is-invalid]="cadastroForm.submitted && !cadastroForm.controls['email']?.valid">
+      <div class="invalid-feedback">Email é obrigatório.</div>
     <label>E-mail</label>
   </div>
   <div class="form-group text-center">
-    <button class="btn btn-success me-2" type="submit">Salvar</button>
+    <button class="btn btn-success me-2" type="submit" [disabled]="!cadastroForm.valid">Salvar</button>
     <button class="btn btn-default me-2" (click)="cancel()" type="button">Cancelar</button>
   </div>
 </form>

@@ -20,8 +20,7 @@ export class RegisterFormComponent {
     this.accountService.registerUser(this.model).subscribe({
       next: response => {
         this.cancel();
-      },
-      error: error => this.toastr.error(error.error)
+      }
     })
   }
 

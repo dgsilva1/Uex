@@ -9,6 +9,7 @@ import { ModalComponent } from '../../modal/cadastro-contact/modal.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MapsComponent } from '../../maps/maps.component';
 import { MapService } from '../../_services/map.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-contact-list',
@@ -23,6 +24,7 @@ export class ContactListComponent implements OnInit{
   searchText: string = '';
   contactsService = inject(ContactsService);
   dialog = inject(MatDialog);
+  private toastr = inject(ToastrService);
   private mapService = inject(MapService);
 
   ngOnInit(): void {
@@ -33,11 +35,14 @@ export class ContactListComponent implements OnInit{
     const dialogRef = this.dialog.open(ModalComponent, {
       width: 'auto',
       height: 'auto',
-      data: contact
+      data: contact,
+      disableClose: true
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
+        const msg = contact == null ? "Usuário cadastrado com sucesso." : "Usuário alterado com sucesso.";
+        this.toastr.success(msg);
         this.loadContacts();
       }
     });

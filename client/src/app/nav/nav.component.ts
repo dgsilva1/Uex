@@ -22,13 +22,20 @@ export class NavComponent {
   model: any = {}
 
   login() {
-    this.accountService.login(this.model).subscribe({
-      next: () => {
-        this.router.navigateByUrl('/contacts');
-        this.toastr.success('Logado com sucesso!');
-      },
-      error: error => this.toastr.error(error.error)
-    });
+    if (this.model.login == null || this.model.password == null)
+      this.toastr.error("Necessário informar login e senha.");
+    else {
+      this.accountService.login(this.model).subscribe({
+        next: () => {
+          this.router.navigateByUrl('/contacts');
+          this.toastr.success('Logado com sucesso!');
+        },
+        error: error => {
+          error.handled = true; 
+          this.toastr.error(error.error);
+        }
+      });
+    }
   }
 
   logout() {
@@ -41,6 +48,7 @@ export class NavComponent {
       width: 'auto',
       height: 'auto',
       data: { action: 'delete-account' },
+      disableClose: true
     });
 
     dialogRef.afterClosed().subscribe((result) => {

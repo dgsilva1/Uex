@@ -177,10 +177,9 @@ namespace TesteUex.Controllers
 
             mapper.Map(contactUpdateModel, contact);
 
-            if (await contactRepository.SaveAllAsync())
-                return NoContent();
+            await contactRepository.SaveAllAsync();
 
-            return BadRequest("Falha ao atualizar o contato.");
+            return NoContent();
         }
 
         [HttpPost("register")]

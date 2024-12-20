@@ -7,10 +7,10 @@
              (input)="filterContacts()"
              class="form-control" />
 
-      <button class="clear-btn" (click)="clearSearch()">
+      <button class="clear-btn" title="Limpar Pesquisa" (click)="clearSearch()">
         <i class="fa fa-times"></i>
       </button>
-      <button class="clear-btn" (click)="addContact()">
+      <button class="clear-btn" title="Adicionar Contato" (click)="addContact()">
         <i class="fa fa-plus"></i>
       </button>
     </div>
@@ -31,10 +31,10 @@
           <p>{{ contact.phone }}</p>
         </div>
         <div class="buttons-container">
-          <button class="edit-btn" (click)="openDialog(contact)">
+          <button class="edit-btn" title="Editar Contato" (click)="openDialog(contact)">
             <i class="fa fa-pencil"></i>
           </button>
-          <button class="edit-btn" (click)="deleteContact(contact.contactId)">
+          <button class="edit-btn" title="Excluir Contato" (click)="deleteContact(contact.contactId)">
             <i class="fa fa-ban"></i>
           </button>
         </div>

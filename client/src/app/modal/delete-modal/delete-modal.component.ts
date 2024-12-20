@@ -35,9 +35,6 @@ export class ConfirmDeleteModalComponent {
         this.toastr.success('Conta excluída com sucesso');
         this.accountService.logout();
         this.dialogRef.close(true);
-      },
-      error: (error) => {
-        this.toastr.error(error.error);
       }
     })
   }

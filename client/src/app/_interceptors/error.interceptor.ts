@@ -8,7 +8,7 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
   const toastr = inject(ToastrService);
   return next(req).pipe(
     catchError(error => {
-      if (error) {
+      if (error && !error.handled) {
         switch (error.status) {
           case 400:
             if (error.error.errors) {
@@ -24,7 +24,7 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
             }
             break;
           case 401:
-            toastr.error('Unauthorised', error.status)
+            toastr.error('Não autorizado. ' + error.error, error.status)
             break;
           case 404:
             router.navigateByUrl('/not-found');
