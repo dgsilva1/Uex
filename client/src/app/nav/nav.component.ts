@@ -29,10 +29,6 @@ export class NavComponent {
         next: () => {
           this.router.navigateByUrl('/contacts');
           this.toastr.success('Logado com sucesso!');
-        },
-        error: error => {
-          error.handled = true; 
-          this.toastr.error(error.error);
         }
       });
     }
